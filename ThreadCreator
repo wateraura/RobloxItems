@@ -4,7 +4,7 @@ var PostBody = prompt("What will the body be?")
 //
 var Link = "http://www.roblox.com/Forum/AddPost.aspx?ForumID=" + ForumId
 $.get(Link,function(Data){
-  var VS = Data.match(/id="__VIEWSTATE" value="(.+)"/)[1]
+	var VS = Data.match(/id="__VIEWSTATE" value="(.+)"/)[1]
 	var EV = Data.match(/id="__EVENTVALIDATION" value="(.+)"/)[1]
 	$.post(Link,{
 		"__VIEWSTATE" : VS,
@@ -12,5 +12,8 @@ $.get(Link,function(Data){
 		"ctl00$cphRoblox$Createeditpost1$PostForm$PostSubject" : PostTitle,
 		"ctl00$cphRoblox$Createeditpost1$PostForm$PostBody" : PostBody,
 		"ctl00$cphRoblox$Createeditpost1$PostForm$PostButton" : "Post"
+	},function(Data){
+		var ThreadId = Data.match(/\/Forum\/ShowPost.aspx?PostID=(\d+)/)[1]
+		window.open("/Forum/ShowPost.aspx?PostID=" + ThreadId)
 	})
 })
