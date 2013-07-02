@@ -13,7 +13,7 @@ $.get(Link,function(Data){
 		"ctl00$cphRoblox$Createeditpost1$PostForm$PostBody" : PostBody,
 		"ctl00$cphRoblox$Createeditpost1$PostForm$PostButton" : "Post"
 	},function(Data){
-		var ThreadId = Data.match(/\/Forum\/ShowPost.aspx?PostID=(\d+)/)[1]
+		var ThreadId = Data.match(/\/Forum\/ShowPost.aspx\WPostID=(\d+)/)[1]
 		window.open("/Forum/ShowPost.aspx?PostID=" + ThreadId)
 	})
 })
